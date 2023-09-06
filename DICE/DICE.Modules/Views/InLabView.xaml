@@ -1,0 +1,30 @@
+﻿<!--<UserControl x:Class="DICE.Modules.Views.InLabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DICE.Modules.Views" 
+             mc:Ignorable="d" Width="700" Height="400">
+    <Grid>
+        <Image Source="Resources\logo_bigdicem.png" Margin="16,64,16,170"/>
+        --><!--<ProgressBar x:Name="MegaConfigProgress" Value="{Binding MegaProgressValue}" Margin="209,82,82,147" ValueChanged="MegaConfigProgress_ValueChanged" />--><!--
+        <Button x:Name="MegaConfigButton" Content="{Binding MegaInLabButtonContent}" Command="{Binding ConfigButtonClickCommand}" CommandParameter="Mega" FontSize="10" Click="MegaConfigButton_Click" Margin="45,278,380,76"/>
+        <Button x:Name="s" Content="{Binding MegaInLabButtonContent}" Command="{Binding ConfigButtonClickCommand}" CommandParameter="Mega" FontSize="10" Click="MegaConfigButton_Click" Margin="385,278,45,76"/>
+    </Grid>
+</UserControl>-->
+
+<UserControl x:Class="DICE.Modules.Views.InLabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DICE.Modules.Views"
+             mc:Ignorable="d" Width="700" Height="370">
+
+    <Grid Margin="0,0,0,10">
+        <Image Source="Resources\logo_bigdicem.png" Margin="12,30,12,140"/>
+        <Button x:Name="MegaConfigButton" Content="{Binding MegaInLabButtonContent1}" Command="{Binding ConfigButtonClickCommand}" CommandParameter="Mega1" FontSize="10" Click="MegaConfigButton_Click" Margin="45,250,380,70"/>
+        <Button x:Name="MegaConfigButton2" Content="{Binding MegaInLabButtonContent2}" Command="{Binding ConfigButtonClickCommand}" CommandParameter="Mega2" FontSize="10" Click="MegaConfigButton_Click" Margin="385,250,45,70"/>
+    </Grid>
+
+</UserControl>

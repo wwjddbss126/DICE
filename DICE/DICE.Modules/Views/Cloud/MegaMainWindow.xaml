@@ -1,0 +1,19 @@
+﻿<dx:ThemedWindow
+    x:Class="DICE.Modules.Views.Cloud.MegaMainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:views="clr-namespace:DICE.Modules.Views.Cloud"
+    Title="DICE-M" Height="860" Width="1750" ResizeMode="CanResize"
+    Icon="../Resources/logo_dicem.png">
+    <Border Background="#F3F6F9" BorderBrush="#0078D4"  BorderThickness="0">
+        <Grid MaxHeight="{x:Static SystemParameters.PrimaryScreenHeight}" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="99*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <views:MegaView Loaded="MegaView_Loaded" Grid.ColumnSpan="2" Margin="0,0,0,0"/>
+        </Grid>
+    </Border>
+</dx:ThemedWindow>

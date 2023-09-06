@@ -1,0 +1,9 @@
+2023-09-06 15:50:12,882 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Start DICE-M: User Authentication!
+2023-09-06 15:50:36,621 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Start DICE-M: User Authentication!
+2023-09-06 15:50:39,402 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Success Mega Login
+2023-09-06 15:50:48,913 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Success collecting file list
+2023-09-06 15:50:49,817 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Success collecting thumbnails
+2023-09-06 15:50:49,817 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Success collecting file history
+2023-09-06 15:51:20,895 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Start DICE-M: User Authentication!
+2023-09-06 15:51:23,674 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Success Mega Login
+2023-09-06 15:52:44,714 [1] INFO DICE.Modules.ViewModels.InLabViewModel - Start DICE-M: Credential Cloning sing Memory!

@@ -1,0 +1,10 @@
+﻿<dx:ThemedWindow x:Class="DICE.Main.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:common="clr-namespace:DICE.Common;assembly=DICE.Common"
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            Title="DICE-M: Digital forensic Inspector for Cloud storage Evidence - MEGA Cloud" Height="400" Width="800" ResizeMode="NoResize"
+            dxmvvm:UIRegion.Region="{x:Static common:Regions.MainWindow}" Icon="logo_dicem.ico">
+</dx:ThemedWindow>

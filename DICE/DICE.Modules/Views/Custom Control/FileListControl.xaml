@@ -1,0 +1,242 @@
+﻿<UserControl x:Class="DICE.Modules.Views.Custom_Control.FileListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DICE.Modules.Views.Custom_Control"
+             mc:Ignorable="d" d:DesignWidth="800" Height="578">
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF707070"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="4,0,0,4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="20">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#F3F6F9"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#F3F6F9"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                            </Trigger>
+                            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#F3F6F9"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="border" Value="#F3F6F9"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                <Setter Property="Foreground" Value="#FF838383"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+    <Border Background="Transparent"  Visibility="{Binding Visibility}">
+        <Border Background="White" BorderThickness="0" CornerRadius="0" Margin="0,0,0,-68">
+            <Grid Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--#region Header-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Name" Margin="110,0,0,0" FontWeight="SemiBold" Foreground="DarkSlateGray" Height="16" Width="34"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="File Item" FontWeight="SemiBold" Foreground="DarkSlateGray" Grid.Column="1" Height="16" Width="50"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Last Modified" FontWeight="SemiBold" Foreground="DarkSlateGray" Height="16" Width="79"/>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Text="File Size" FontWeight="SemiBold" Foreground="DarkSlateGray" Height="16" Width="46"/>
+                    <Separator Grid.ColumnSpan="4" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#F0F5F8" Height="1" Margin="0,57,0,0"/>
+                </Grid>
+                <ScrollViewer Grid.Row="1" Focusable="False" CanContentScroll="True" Margin="0,0,3,113" Grid.ColumnSpan="2" >
+                    <StackPanel Orientation="Vertical">
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox  Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/folder.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="문서" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="2 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2020-06-07 13:53:27" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="512KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox  Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/folder.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="바탕화면" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="98 Items" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2019-03-14 23:51:52" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="15.6GB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}" Click="Button_Click_1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/rclone.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"><Run Text="download"/><Run Text="f"/><Run Language="ko-kr" Text="ile.pptx"/></TextBlock>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2022-06-06 22:56:12" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="112KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/우주.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="Space.png" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2022-07-06 12:14:12" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="413KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/6월장부.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="6월장부.xlsx" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2022-06-30 09:23:19" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="11.68KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}" Click="Button_Click">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/발표자료.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="발표자료.png" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"><Run Language="ko-kr" /></TextBlock>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2022-07-23 22:53:12" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="93.5KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="../assets/00003.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="고려대.docx" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2022-01-18 15:29:50" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="190KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="75"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <CheckBox Margin="3"></CheckBox>
+                                    <Image Margin="10,0,0,0" Width="50" Stretch="Uniform" Source="/DICE.Modules;component/Views/Assets/엑셀썸네일.png" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="20,0,0,0" Text="회계장부.xlsx" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" FontWeight="Bold" Foreground="LightSlateGray"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="1 Item" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="2" Text="2021-02-18 11:22:53" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                                <TextBlock Grid.Column="3" Text="21KB" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Foreground="LightSlateGray"/>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+                <!--#endregion-->
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

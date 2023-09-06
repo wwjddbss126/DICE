@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="DICE.Modules.Views.Cloud.MegaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
+             xmlns:common="clr-namespace:DICE.Common;assembly=DICE.Common" 
+             mc:Ignorable="d"             
+             d:DesignHeight="850" d:DesignWidth="1200">
+        
+    <UserControl.Resources>
+        <DataTemplate x:Key="{dxt:DXTabControlThemeKey ResourceKey=Background, IsThemeIndependent=true}">
+            <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="0" />
+        </DataTemplate>
+        <dxmvvm:ObjectToObjectConverter x:Key="accordionWidthConverter" DefaultTarget="46">
+            <dxmvvm:MapItem Source="True" Target="242"/>
+        </dxmvvm:ObjectToObjectConverter>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="850"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <dxlc:LayoutControl Grid.Column="0">
+            <dxa:AccordionControl x:Name="accordion" VerticalAlignment="Top" Height="800" 
+                          dxmvvm:UIRegion.Region="{x:Static common:Regions.MegaCloudNavigation}"
+                          MinWidth="230"
+                          dxlc:LayoutControl.AllowHorizontalSizing="False"
+                          IsCollapseButtonVisible="False"
+                          AutoExpandAllItems="True"
+                          ChildrenPath="Content"
+                          ShowHeader="True"
+                          HeaderContent="MEGA Cloud"
+                          HeaderGlyph="../Assets/storage_mega.png"
+                          HeaderGlyphSize="32,30">
+
+                <dxa:AccordionControl.ItemContainerStyle>
+                    <Style TargetType="dxa:AccordionItem">
+                        <Style.Triggers>
+                            <Trigger Property="ItemLevel" Value="0">
+                                <Setter Property="Header" Value="Explorer"/>
+                                <Setter Property="GlyphSize" Value="33,26"/>
+                                                                
+                            </Trigger>
+                            <Trigger Property="ItemLevel" Value="1">
+                                <Setter Property="ItemDisplayMode" Value="Header"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </dxa:AccordionControl.ItemContainerStyle>
+            </dxa:AccordionControl>
+        </dxlc:LayoutControl>
+
+        <!-- 컨텐츠 뷰 + 디테일 뷰 -->
+        <dxlc:LayoutControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <dx:LoadingDecorator VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <dx:DXTabControl AllowMerging="True" TabContentCacheMode="CacheAllTabs" Margin="-25,-25, 0, 0" HorizontalAlignment="Left"
+                                 dxmvvm:UIRegion.Region="{x:Static common:Regions.MegaCloudTree}">
+                    <dx:DXTabControl.View>
+                        <dx:TabControlScrollView HeaderLocation="None"/>
+                    </dx:DXTabControl.View>
+                </dx:DXTabControl>
+            </dx:LoadingDecorator>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

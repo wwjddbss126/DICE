@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="DICE.Modules.Views.Cloud.MegaNavView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:viewmodel="clr-namespace:DICE.Modules.ViewModels.Cloud"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             mc:Ignorable="d" d:DataContext="{dxmvvm:ViewModelSource viewmodel:MegaTestDatasetViewModel}" d:DesignWidth="400" Width="400" Height="730">
+    <UserControl.Resources>
+        <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <dxg:TreeListControl ShowBorder="False" ItemsSource="{Binding Folders}" SelectedItem="{Binding CurrentFolder, Mode=TwoWay}" DesignTimeShowSampleData="False" FontFamily="Noto Sans">
+        <dxg:TreeListControl.Columns>
+            <dxg:TreeListColumn FieldName="Name" MinWidth="450">
+                <dxg:TreeListColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <dx:DXImage Source="{Binding RowData.Row.ImageSource}" Margin="0,0,10,0" Height="16" Width="auto"/>
+                            <TextBlock Text="{Binding RowData.Row.MegaName}" VerticalAlignment="Center" Width="auto">
+                                <TextBlock.FontWeight>
+                                    <Binding Path="RowData.Row.MegaCount">
+                                        <Binding.Converter>
+                                            <dx:EnumToObjectConverter DefaultValue="Bold">
+                                                <dx:EnumToObjectConverter.Values>
+                                                    <dx:EnumObjectProvider x:Key="0" Value="Normal"/>
+                                                </dx:EnumToObjectConverter.Values>
+                                            </dx:EnumToObjectConverter>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </TextBlock.FontWeight>
+                            </TextBlock>
+                            <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Text="{Binding RowData.Row.MegaCount, StringFormat=[\{0\}]}">
+                                <TextBlock.Visibility>
+                                    <Binding Path="RowData.Row.MegaCount">
+                                        <Binding.Converter>
+                                            <dx:EnumToObjectConverter DefaultValue="auto">
+                                                <dx:EnumToObjectConverter.Values>
+                                                    <dx:EnumObjectProvider x:Key="0" Value="Collapsed"/>
+                                                </dx:EnumToObjectConverter.Values>
+                                            </dx:EnumToObjectConverter>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </dxg:TreeListColumn.CellTemplate>
+            </dxg:TreeListColumn>
+        </dxg:TreeListControl.Columns>
+        <dxg:TreeListControl.View>
+            <dxg:TreeListView ShowColumnHeaders="False"                              
+                              NavigationStyle="Row"
+                              AllowEditing="False"
+                              ShowHorizontalLines="False"
+                              ShowVerticalLines="False"
+                              ShowIndicator="False"
+                              VerticalScrollbarVisibility="Auto"
+                              HorizontalScrollbarVisibility="Auto"
+                              TreeDerivationMode="ChildNodesSelector"
+                              AllowRecursiveNodeChecking="True"            
+                              BestFitMode="Smart"
+                              TreeLineStyle="None"                              
+                              AutoExpandAllNodes="False">
+                <dxg:TreeListView.ChildNodesSelector>
+                    <viewmodel:MegaCloudFoldersChildSelector/>
+                </dxg:TreeListView.ChildNodesSelector>
+            </dxg:TreeListView>
+        </dxg:TreeListControl.View>
+    </dxg:TreeListControl>
+</UserControl>
