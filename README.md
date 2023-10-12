@@ -1,4 +1,6 @@
 # DICE
+![image](https://github.com/wwjddbss126/DICE/assets/49504937/ff2faaa3-4e15-48a7-940b-b18fb1e17a3a)
+
 Digital forensic Inspector for Cloud storage Evidence - MEGA Cloud
 ---
 DICE-M(Digital forensic Inspector for Cloud storage Evidence - MEGA Cloud) is a graphical user interface (GUI) toolkit developed using Devexpress WPF and C#. It provides two main functionalities: exploration and collection of data within MEGA Cloud using user credentials, and the ability to perform a Credential Cloning Attack using Windows memory dump files on Mega Cloud.
