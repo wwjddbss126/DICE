@@ -31,10 +31,15 @@ It offers the following features:
 ## Usage 
 
 1. Launch DICE-M (DICE/Release/DICE.Main.exe).
+
 2. Choose the desired operation (A. Data Exploration or B. Credential Cloning Attack).
+
 3-A. Authenticate users by entering a valid ID, PW of MEGA Cloud storage that requires digital forensic investigation. 
+
 3-B. Enter the PC memory dump file. If the login-related data contained in the memory file is valid, it will be connected to cloud storage through the Browser Automation Program.
+
 4-A. Explore cloud storage based on collected metadata and collect files related to crime.
+
 4-B. Explore cloud storage connected to web browser. **Be careful not to delete/modify at this time and use methods such as leaving video records.**
 
 **Please note**: The Credential Cloning Attack feature should be used for criminal investigation and evidence collection purposes only. Unauthorized access or modification to the system is illegal and unethical.
