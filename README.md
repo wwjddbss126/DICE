@@ -27,8 +27,9 @@ It offers the following features:
 
 ## Requirements
 
-1. DevExpress v22.1 
-2. Memory dump created by Windows OS that logged into the MEGA Cloud using a web browser
+1. DevExpress v22.1
+2. Chrome v102
+3. Memory dump created by Windows OS that logged into the MEGA Cloud using a web browser
 
 ## Usage 
 
