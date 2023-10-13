@@ -35,6 +35,7 @@ It offers the following features:
 1. Launch DICE-M (DICE/Release/DICE.Main.exe).
 
 2. Choose the desired operation (A. Data Exploration or B. Credential Cloning Attack).
+![image](https://github.com/wwjddbss126/DICE/assets/49504937/17229024-c7b6-43e6-a6ec-806c07c7a2ec)
 
 3-A. Authenticate users by entering a valid ID, PW of MEGA Cloud storage that requires digital forensic investigation. 
 
